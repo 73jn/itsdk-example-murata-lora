@@ -64,7 +64,7 @@ struct state {
 #define BUTTON_PORT	__BANK_B
 #define BUTTON_PIN 	__LP_GPIO_2
 
-
+int gg=0;
 
 void task() {
 
@@ -150,17 +150,18 @@ void project_setup() {
 //	SX1276InitLowPower();
 	log_info("Starting up\r\n");				// print a message on the USART2
 	itsdk_delayMs(2000);
+	lowPower_enable();
 
 	//itsdk_config_resetToFactory();
 
-	s_state.led = __GPIO_VAL_RESET;
-	s_state.loops = 0;
-	s_state.lastComMS = COMFREQS;
-	s_state.setup = BOOL_FALSE;
-	gpio_change(LED1_PORT, LED1_PIN,s_state.led);
-	gpio_reset(LED4_PORT,LED4_PIN);
+	//s_state.led = __GPIO_VAL_RESET;
+	//s_state.loops = 0;
+	//s_state.lastComMS = COMFREQS;
+	//s_state.setup = BOOL_FALSE;
+	//gpio_change(LED1_PORT, LED1_PIN,s_state.led);
+	//gpio_reset(LED4_PORT,LED4_PIN);
 
-	itdt_sched_registerSched(TASKDELAYMS,ITSDK_SCHED_CONF_IMMEDIATE, &task);
+	//itdt_sched_registerSched(TASKDELAYMS,ITSDK_SCHED_CONF_IMMEDIATE, &task);
 
 	//lowPower_disable();
 }
@@ -172,5 +173,15 @@ void project_setup() {
  */
 void project_loop() {
     itsdk_lorawan_loop();
+	if (gg==1){
+		log_info("Wakeup, went in interrupt\r\n");
+		RTC_TimeTypeDef time;
+		HAL_RTC_GetTime(&hrtc, &time, RTC_FORMAT_BIN);
+		log_info("Do Something very nice...\r\n");
+		log_info("%dH:%dmin:%dsec\r\n", time.Hours, time.Minutes, time.Seconds);
+		gg=0;
+	}
+	log_info("sleepmode\r\n");
+	lowPower_delayMs(20000);
 }
 
