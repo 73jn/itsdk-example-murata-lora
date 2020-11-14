@@ -81,22 +81,15 @@
 																		   // OTAA
 																		   // =============================
 
-#define ITSDK_LORAWAN_DEVEUI		{													\
-										0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00	\
-									}									   // Static DEVEUI (big endian)
+#define ITSDK_LORAWAN_DEVEUI		{ 0x00, 0x7F, 0xF4, 0xDC, 0x6F, 0x07, 0x22, 0xE6 }								   // Static DEVEUI (big endian)
 																		   // Bytes are in the same order as
 																		   // in a String.
 
-#define ITSDK_LORAWAN_APPEUI		{													\
-										0x70, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00	\
-									}									   // Static APPEUI (big endian)
+#define ITSDK_LORAWAN_APPEUI		{ 0x70, 0xB3, 0xD5, 0x7E, 0xD0, 0x03, 0x5F, 0x3E }									   // Static APPEUI (big endian)
 																		   // Bytes are in the same order as
 																		   // in a String.
 
-#define ITSDK_LORAWAN_APPKEY		{													\
-										0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, \
-										0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00  \
-									}									   // Static APPKEY (byte[])
+#define ITSDK_LORAWAN_APPKEY		{ 0xAB, 0x57, 0x93, 0xF1, 0x72, 0xDC, 0x0E, 0x24, 0x1A, 0x0C, 0xD0, 0xCF, 0xE9, 0x4D, 0xE9, 0x8E }									   // Static APPKEY (byte[])
 																		   // Bytes are in the same order compared
 																		   // as in a String.
 
