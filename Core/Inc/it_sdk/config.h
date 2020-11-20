@@ -45,9 +45,9 @@
 #define ITSDK_WITH_DRIVERS			__ENABLE								// Includes configDrivers.h
 #define ITSDK_RAM_SIZE				(20*1024)								// RAM Memory size
 #define ITSDK_EPROM_SIZE			(6*1024)								// EEPROM size
-#define ITSDK_WITH_UART				( __UART_USART2 )						// Use USART2 for debug and console
-#define ITSDK_WITH_UART_RXIRQ		__UART_USART2							// Setup some of the UART with IRQ enabled for RX
-#define ITSDK_WITH_UART_RXIRQ_BUFSZ 64										// Size of the UART IRQ RX circular buffer (power of 2)
+#define ITSDK_WITH_UART				( __UART_USART1_USART2 )						// Use USART2 for debug and console EDIT CETAIT LE 2
+#define ITSDK_WITH_UART_RXIRQ		__UART_USART1_USART2							// Setup some of the UART with IRQ enabled for RX , EDIT
+#define ITSDK_WITH_UART_RXIRQ_BUFSZ 64							// Size of the UART IRQ RX circular buffer (power of 2)
 #define ITSDK_WITH_RTC				__RTC_ENABLED							// The Rtc is usd in the firmware
 #define ITSDK_WITH_CLK_ADJUST		__ENABLE								// The RTC (and wtachdog) is calibrated
 #define ITSDK_RTC_CLKFREQ			32768									// RTC clock source frequency
@@ -188,7 +188,7 @@
 // SCHEDULER & STATE MACHINE
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-#define ITSDK_SHEDULER_TASKS		1										// Maximum number of Task (0 will deactivate scheduler code)
+#define ITSDK_SHEDULER_TASKS		0										// Maximum number of Task (0 will deactivate scheduler code)
 #define ITSDK_STATEMACHINE_TASKS	0										// Maximum number of state machine task (0 will deactivate STM code)
 #define ITSDK_STATEMACHINE_NAMESZ	8										// Maximum size for task name (-1)
 #define ITSDK_STATEMACHINE_STATIC 	__DISABLE								// state machine optimization with definition stored in flaash instead of RAM

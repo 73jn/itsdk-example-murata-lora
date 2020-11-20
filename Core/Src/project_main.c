@@ -152,6 +152,8 @@ void project_setup() {
 	itsdk_delayMs(2000);
 	lowPower_enable();
 
+
+	 serial1_init();
 	//itsdk_config_resetToFactory();
 
 	//s_state.led = __GPIO_VAL_RESET;
@@ -171,7 +173,12 @@ void project_setup() {
  * Project loop may not contain functional stuff
  * Keep in this loop only really short operations
  */
+extern uint8_t externalBuffer[5];
+extern int actuatorCounter;
+extern int externDistance;
+extern uint8_t bufferGetter;
 void project_loop() {
+	/*
     itsdk_lorawan_loop();
 	if (gg==1){
 		log_info("Wakeup, went in interrupt\r\n");
@@ -183,5 +190,33 @@ void project_loop() {
 	}
 	log_info("sleepmode\r\n");
 	lowPower_delayMs(20000);
-}
+	*/
 
+	log_info("Loop, actuator : %d\n\r", actuatorCounter);
+	log_info("Getter : %c\r\n", bufferGetter);
+	lowPower_delayMs(499);
+	for(int i = 0; i < 5; i++)
+	log_info("%c\n\r", externalBuffer[i]);
+	log_info("%d\n\r", externDistance);
+	/*
+	char c;
+	serial_read_response_e r;
+	do {
+		 r = serial1_read(&c);
+		 if ( r == SERIAL_READ_SUCCESS || r == SERIAL_READ_PENDING_CHAR) {
+				log_info("Uart1 : %c\r\n",c);
+		 }
+			log_info("Response ULTRASONIC : %d\r\n",r);
+	} while ( r == SERIAL_READ_PENDING_CHAR );
+
+	do {
+		 r = serial2_read(&c);
+		 if ( r == SERIAL_READ_SUCCESS || r == SERIAL_READ_PENDING_CHAR) {
+				log_info("Uart2 : %c\r\n",c);
+		 }
+			log_info("Response CONSOLE : %d\r\n",r);
+	} while ( r == SERIAL_READ_PENDING_CHAR );
+	*/
+
+
+}
