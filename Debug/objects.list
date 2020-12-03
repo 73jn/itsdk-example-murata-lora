@@ -1,4 +1,5 @@
 "Core/Src/adc.o"
+"Core/Src/alarm_it.o"
 "Core/Src/gpio.o"
 "Core/Src/iwdg.o"
 "Core/Src/main.o"
@@ -87,7 +88,6 @@
 "stm32-it-sdk/Src/drivers/sx1276/sigfox_sx1276.o"
 "stm32-it-sdk/Src/drivers/sx1276/sx1276.o"
 "stm32-it-sdk/Src/drivers/temphygropressure/bosh_bme280/bme280.o"
-"stm32-it-sdk/Src/drivers/temphygropressure/infineon_dps422/dps422.o"
 "stm32-it-sdk/Src/drivers/temphygropressure/omron_2smpb-02b/o_2smpb.o"
 "stm32-it-sdk/Src/it_sdk/accel/accel.o"
 "stm32-it-sdk/Src/it_sdk/console/console.o"

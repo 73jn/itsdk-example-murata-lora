@@ -45,8 +45,8 @@
 #define ITSDK_WITH_DRIVERS			__ENABLE								// Includes configDrivers.h
 #define ITSDK_RAM_SIZE				(20*1024)								// RAM Memory size
 #define ITSDK_EPROM_SIZE			(6*1024)								// EEPROM size
-#define ITSDK_WITH_UART				( __UART_USART2 )						// Use USART2 for debug and console
-#define ITSDK_WITH_UART_RXIRQ		__UART_USART2							// Setup some of the UART with IRQ enabled for RX
+#define ITSDK_WITH_UART				( __UART_USART1_USART2 )						// Use USART2 for debug and console /EDIT avant le 2
+#define ITSDK_WITH_UART_RXIRQ		__UART_USART1_USART2							// Setup some of the UART with IRQ enabled for RX
 #define ITSDK_WITH_UART_RXIRQ_BUFSZ 64										// Size of the UART IRQ RX circular buffer (power of 2)
 #define ITSDK_WITH_RTC				__RTC_ENABLED							// The Rtc is usd in the firmware
 #define ITSDK_WITH_CLK_ADJUST		__ENABLE								// The RTC (and wtachdog) is calibrated
@@ -222,7 +222,7 @@
 																			// Default dynamic key for the SECSTORE
 #define ITSDK_SECSTORE_CONSOLEKEY   "changeme"								// Default console passwd string (max 15 char)
 
-#define ITSDK_WITH_CONSOLE			__ENABLE								// Enable / Disable the Console feature
+#define ITSDK_WITH_CONSOLE			__DISABLE								// Enable / Disable the Console feature
 #define ITSDK_CONSOLE_SERIAL		__UART_USART2							// Serial port to be used for console
 #define ITSDK_CONSOLE_LINEBUFFER	40										// Max Size of a line in the console. Dropped after.
 #define ITSDK_CONSOLE_EXPIRE_S		300										// After 300 Seconds the console will lock automatically

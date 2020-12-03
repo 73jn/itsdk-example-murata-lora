@@ -1,4 +1,11 @@
-Core/Src/system_stm32l0xx.o: ../Core/Src/system_stm32l0xx.c \
+Core/Src/alarm_it.o: ../Core/Src/alarm_it.c \
+ C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Core/Inc/alarm_it.h \
+ C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Core/Inc/rtc.h \
+ C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Core/Inc/main.h \
+ C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h \
+ C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Core/Inc/stm32l0xx_hal_conf.h \
+ C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h \
+ C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_def.h \
  C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l0xx.h \
  C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l072xx.h \
  C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/CMSIS/Include/core_cm0plus.h \
@@ -6,10 +13,6 @@ Core/Src/system_stm32l0xx.o: ../Core/Src/system_stm32l0xx.c \
  C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/CMSIS/Include/cmsis_gcc.h \
  C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/CMSIS/Include/core_cmFunc.h \
  C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/CMSIS/Device/ST/STM32L0xx/Include/system_stm32l0xx.h \
- C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h \
- C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Core/Inc/stm32l0xx_hal_conf.h \
- C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h \
- C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_def.h \
  C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/STM32L0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h \
  C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc_ex.h \
  C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_gpio.h \
@@ -32,7 +35,22 @@ Core/Src/system_stm32l0xx.o: ../Core/Src/system_stm32l0xx.c \
  C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim.h \
  C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim_ex.h \
  C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h \
- C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h
+ C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h \
+ C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Core/Inc/stm32l0xx_it.h
+
+C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Core/Inc/alarm_it.h:
+
+C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Core/Inc/rtc.h:
+
+C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Core/Inc/main.h:
+
+C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h:
+
+C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Core/Inc/stm32l0xx_hal_conf.h:
+
+C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h:
+
+C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_def.h:
 
 C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l0xx.h:
 
@@ -47,14 +65,6 @@ C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/CMSIS/Include
 C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/CMSIS/Include/core_cmFunc.h:
 
 C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/CMSIS/Device/ST/STM32L0xx/Include/system_stm32l0xx.h:
-
-C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h:
-
-C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Core/Inc/stm32l0xx_hal_conf.h:
-
-C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h:
-
-C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_def.h:
 
 C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/STM32L0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h:
 
@@ -101,3 +111,5 @@ C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/STM32L0xx_HAL
 C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h:
 
 C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h:
+
+C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Core/Inc/stm32l0xx_it.h:

@@ -144,13 +144,17 @@ void task() {
 
 // =====================================================================
 // Setup
-
+extern uint8_t byte;
+extern uint8_t tabToPrint[5];
 void project_setup() {
 
 //	SX1276InitLowPower();
+
 	log_info("Starting up\r\n");				// print a message on the USART2
 	itsdk_delayMs(2000);
 	lowPower_enable();
+
+
 
 	//itsdk_config_resetToFactory();
 
@@ -171,17 +175,33 @@ void project_setup() {
  * Project loop may not contain functional stuff
  * Keep in this loop only really short operations
  */
+extern int serial1Counter;
+extern int serial2Counter;
+extern uint8_t tabToPrint[5];
 void project_loop() {
+
+	//TEST RTC
+	/*
     itsdk_lorawan_loop();
 	if (gg==1){
 		log_info("Wakeup, went in interrupt\r\n");
+
+		//lire la date AUSSI SINON NULLLLLLLLLLLL
 		RTC_TimeTypeDef time;
 		HAL_RTC_GetTime(&hrtc, &time, RTC_FORMAT_BIN);
 		log_info("Do Something very nice...\r\n");
 		log_info("%dH:%dmin:%dsec\r\n", time.Hours, time.Minutes, time.Seconds);
 		gg=0;
 	}
+
 	log_info("sleepmode\r\n");
 	lowPower_delayMs(20000);
+	*/
+
+	  HAL_UART_Transmit(&huart2, &tabToPrint[0], 5, 500);
+	  HAL_UART_Transmit(&huart2, (uint8_t*)"\nL00\r\n", 6, 500);
+	  log_info("Hello\n");
+	  HAL_UART_Receive_IT(&huart1, &byte, 1);
+	  HAL_Delay(500);
 }
 

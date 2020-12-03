@@ -25,7 +25,10 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-
+#define RADIO_NSS_Pin GPIO_PIN_15
+#define RADIO_NSS_GPIO_Port GPIOA
+#define RADIO_SCLK_Pin GPIO_PIN_3
+#define RADIO_SCLK_GPIO_Port GPIOB
 /* USER CODE BEGIN Includes */
 
 /* USER CODE END Includes */
