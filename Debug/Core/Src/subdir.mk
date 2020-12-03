@@ -5,9 +5,11 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../Core/Src/adc.c \
+../Core/Src/alarm.c \
 ../Core/Src/alarm_it.c \
 ../Core/Src/gpio.c \
 ../Core/Src/iwdg.c \
+../Core/Src/logicsm.c \
 ../Core/Src/main.c \
 ../Core/Src/project_main.c \
 ../Core/Src/rtc.c \
@@ -22,9 +24,11 @@ C_SRCS += \
 
 OBJS += \
 ./Core/Src/adc.o \
+./Core/Src/alarm.o \
 ./Core/Src/alarm_it.o \
 ./Core/Src/gpio.o \
 ./Core/Src/iwdg.o \
+./Core/Src/logicsm.o \
 ./Core/Src/main.o \
 ./Core/Src/project_main.o \
 ./Core/Src/rtc.o \
@@ -39,9 +43,11 @@ OBJS += \
 
 C_DEPS += \
 ./Core/Src/adc.d \
+./Core/Src/alarm.d \
 ./Core/Src/alarm_it.d \
 ./Core/Src/gpio.d \
 ./Core/Src/iwdg.d \
+./Core/Src/logicsm.d \
 ./Core/Src/main.d \
 ./Core/Src/project_main.d \
 ./Core/Src/rtc.d \
@@ -58,12 +64,16 @@ C_DEPS += \
 # Each subdirectory must supply rules for building sources it contributes
 Core/Src/adc.o: ../Core/Src/adc.c
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m0plus -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32L072xx -DDEBUG -c -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/stm32-it-sdk/Inc" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/STM32L0xx_HAL_Driver/Inc" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/stm32-it-sdk/Inc" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/CMSIS/Include" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/CMSIS/Device/ST/STM32L0xx/Include" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Core/Inc" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Core/Inc" -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/adc.d" -MT"$@" --specs=nano.specs -mfloat-abi=soft -mthumb -o "$@"
+Core/Src/alarm.o: ../Core/Src/alarm.c
+	arm-none-eabi-gcc "$<" -mcpu=cortex-m0plus -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32L072xx -DDEBUG -c -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/stm32-it-sdk/Inc" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/STM32L0xx_HAL_Driver/Inc" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/stm32-it-sdk/Inc" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/CMSIS/Include" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/CMSIS/Device/ST/STM32L0xx/Include" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Core/Inc" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Core/Inc" -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/alarm.d" -MT"$@" --specs=nano.specs -mfloat-abi=soft -mthumb -o "$@"
 Core/Src/alarm_it.o: ../Core/Src/alarm_it.c
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m0plus -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32L072xx -DDEBUG -c -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/stm32-it-sdk/Inc" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/STM32L0xx_HAL_Driver/Inc" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/stm32-it-sdk/Inc" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/CMSIS/Include" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/CMSIS/Device/ST/STM32L0xx/Include" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Core/Inc" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Core/Inc" -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/alarm_it.d" -MT"$@" --specs=nano.specs -mfloat-abi=soft -mthumb -o "$@"
 Core/Src/gpio.o: ../Core/Src/gpio.c
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m0plus -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32L072xx -DDEBUG -c -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/stm32-it-sdk/Inc" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/STM32L0xx_HAL_Driver/Inc" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/stm32-it-sdk/Inc" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/CMSIS/Include" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/CMSIS/Device/ST/STM32L0xx/Include" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Core/Inc" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Core/Inc" -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/gpio.d" -MT"$@" --specs=nano.specs -mfloat-abi=soft -mthumb -o "$@"
 Core/Src/iwdg.o: ../Core/Src/iwdg.c
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m0plus -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32L072xx -DDEBUG -c -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/stm32-it-sdk/Inc" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/STM32L0xx_HAL_Driver/Inc" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/stm32-it-sdk/Inc" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/CMSIS/Include" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/CMSIS/Device/ST/STM32L0xx/Include" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Core/Inc" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Core/Inc" -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/iwdg.d" -MT"$@" --specs=nano.specs -mfloat-abi=soft -mthumb -o "$@"
+Core/Src/logicsm.o: ../Core/Src/logicsm.c
+	arm-none-eabi-gcc "$<" -mcpu=cortex-m0plus -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32L072xx -DDEBUG -c -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/stm32-it-sdk/Inc" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/STM32L0xx_HAL_Driver/Inc" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/stm32-it-sdk/Inc" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/CMSIS/Include" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/CMSIS/Device/ST/STM32L0xx/Include" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Core/Inc" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Core/Inc" -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/logicsm.d" -MT"$@" --specs=nano.specs -mfloat-abi=soft -mthumb -o "$@"
 Core/Src/main.o: ../Core/Src/main.c
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m0plus -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32L072xx -DDEBUG -c -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/stm32-it-sdk/Inc" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/STM32L0xx_HAL_Driver/Inc" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/stm32-it-sdk/Inc" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/CMSIS/Include" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Drivers/CMSIS/Device/ST/STM32L0xx/Include" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Core/Inc" -I"C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Core/Inc" -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32L0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"$@" --specs=nano.specs -mfloat-abi=soft -mthumb -o "$@"
 Core/Src/project_main.o: ../Core/Src/project_main.c
