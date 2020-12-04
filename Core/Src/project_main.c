@@ -42,6 +42,7 @@
 #include <drivers/sx1276/sx1276.h>
 #include "alarm.h"
 #include "logicsm.h"
+#include "xf.h"
 
 #define COMFREQS	(1*60*1000)
 #define TASKDELAYMS	(1000)
@@ -175,8 +176,11 @@ void project_setup() {
  * Keep in this loop only really short operations
  */
 void project_loop() {
-	processAlarm();
-	processLogic(404);
+    Event ev = 99;
+    ev = XF_popEvent();
+
+	processAlarm(ev);
+	processLogic(ev);
 
 }
 

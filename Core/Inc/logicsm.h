@@ -33,7 +33,7 @@ typedef enum{STATE_INITIAL,
 typedef enum{initSig,
 		doMeasureSig,
 		tansmitSig,
-		goSleepSig} Event;
+		goSleepSig} EventSig;
 
 LogicState state;
 LogicState oldState;

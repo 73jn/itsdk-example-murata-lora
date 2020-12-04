@@ -61,7 +61,9 @@ Core/Src/alarm.o: ../Core/Src/alarm.c \
  C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/stm32-it-sdk/Inc/drivers/sx1276/sx1276.h \
  C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/stm32-it-sdk/Inc/drivers/lorawan/phy/radio.h \
  C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/stm32-it-sdk/Inc/drivers/sx1276/sx1276Regs-Fsk.h \
- C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/stm32-it-sdk/Inc/drivers/sx1276/sx1276Regs-LoRa.h
+ C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/stm32-it-sdk/Inc/drivers/sx1276/sx1276Regs-LoRa.h \
+ C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Core/Inc/logicsm.h \
+ C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Core/Inc/xf.h
 
 C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Core/Inc/alarm.h:
 
@@ -188,3 +190,7 @@ C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/stm32-it-sdk/Inc/driv
 C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/stm32-it-sdk/Inc/drivers/sx1276/sx1276Regs-Fsk.h:
 
 C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/stm32-it-sdk/Inc/drivers/sx1276/sx1276Regs-LoRa.h:
+
+C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Core/Inc/logicsm.h:
+
+C:/Users/jeann/Desktop/LoRaTrash/itsdk-example-murata-lora/Core/Inc/xf.h:

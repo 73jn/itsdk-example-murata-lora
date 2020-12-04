@@ -25,6 +25,7 @@
 #include <it_sdk/lowpower/lowpower.h>
 #include <drivers/sx1276/sx1276.h>
 #include "logicsm.h"
-void processAlarm(void);
+#include "xf.h"
+void processAlarm(int event);
 
 #endif /* INC_ALARM_H_ */

@@ -1,0 +1,3 @@
+xf.c:22:6:XF_init	16	static
+xf.c:40:6:XF_pushEvent	24	static
+xf.c:60:7:XF_popEvent	16	static

@@ -6,7 +6,7 @@
  */
 #include "alarm.h"
 int gg=0;
-void processAlarm(){
+void processAlarm(int event){
 	//TEST RTC
     itsdk_lorawan_loop();
 	if (gg==1){
@@ -19,7 +19,7 @@ void processAlarm(){
 		HAL_RTC_GetDate(&hrtc,&date,RTC_FORMAT_BIN);
 		log_info("Do Something very nice...\r\n");
 		log_info("%dH:%dmin:%dsec\r\n", time.Hours, time.Minutes, time.Seconds);
-		processLogic(1);
+		XF_pushEvent(1);
 		gg=0;
 	}
 }
