@@ -60,12 +60,12 @@ void processLogic(int event){
 	}
 }
 void goToSleep(){
-	log_info("GO TO SLEEP");
+	log_info(".");
 	lowPower_delayMs(20000);
 }
 
 void transmitData(void){
-	log_info("TRANSMIT DATA\r\n");
+	log_info("Try to join LoRaWAN...\r\n");
 	static itsdk_lorawan_channelInit_t channels= ITSDK_LORAWAN_CHANNEL;
 	#ifdef ITSDK_LORAWAN_CHANNEL
 		itsdk_lorawan_setup(__LORAWAN_REGION_EU868,&channels);
@@ -96,22 +96,26 @@ void transmitData(void){
 			PAYLOAD_ENCRYPT_NONE	// End to End encryption mode
 	);
 	if ( r == LORAWAN_SEND_SENT || r == LORAWAN_SEND_ACKED || LORAWAN_SEND_ACKED_WITH_DOWNLINK) {
-		log_info("success\r\n",r);
+		log_info("success !\r\n",r);
 	} else {
 		log_info("failed (%d)\r\n",r);
 	}
 }
 
 void startMeasure(void){
-	log_info("Start MEASURE");
+	log_info("Start the measure...\r\n");
+
+	HAL_GPIO_WritePin(SONICEN_GPIO_Port, SONICEN_Pin, GPIO_PIN_SET);
+	HAL_Delay(2500);
 	HAL_UART_Receive_IT(&huart1, &byte, 1); //On lance une mesure
 	HAL_Delay(1500);
 	HAL_UART_Receive_IT(&huart1, &byte, 1); //On lance une mesure
 	HAL_Delay(1500);
 
-	log_info("We need to send ");
+	log_info("Distance ");
 	HAL_UART_Transmit(&huart2, &tabToPrint[0], 5, 500);
-	log_info("\r\n");
+	log_info("\nwill be sent !\r\n");
+	HAL_GPIO_WritePin(SONICEN_GPIO_Port, SONICEN_Pin, GPIO_PIN_RESET);
 	  //waitMeasure = true; //Doit être fait pas l'interrupt et doit tomber dans un etat nop en attendant l'interrupt
 
 }

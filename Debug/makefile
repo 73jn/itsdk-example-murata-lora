@@ -69,26 +69,34 @@ endif
 
 -include ../makefile.defs
 
+BUILD_ARTIFACT_NAME := board-lora
+BUILD_ARTIFACT_EXTENSION := elf
+BUILD_ARTIFACT_PREFIX := 
+BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME).$(BUILD_ARTIFACT_EXTENSION)
+
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-itsdk-example-murata-lora.elf \
+board-lora.elf \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-itsdk-example-murata-lora.list \
+board-lora.list \
 
 OBJCOPY_BIN += \
-itsdk-example-murata-lora.bin \
+board-lora.bin \
 
 
 # All Target
-all: itsdk-example-murata-lora.elf secondary-outputs
+all: main-build
+
+# Main-build Target
+main-build: board-lora.elf secondary-outputs
 
 # Tool invocations
-itsdk-example-murata-lora.elf: $(OBJS) $(USER_OBJS) ../STM32L072CZYx_FLASH.ld
-	arm-none-eabi-gcc -o "itsdk-example-murata-lora.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0plus -T"../STM32L072CZYx_FLASH.ld" --specs=nosys.specs -Wl,-Map="itsdk-example-murata-lora.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+board-lora.elf: $(OBJS) $(USER_OBJS) ../STM32L072CZYx_FLASH.ld
+	arm-none-eabi-gcc -o "board-lora.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0plus -T"../STM32L072CZYx_FLASH.ld" --specs=nosys.specs -Wl,-Map="board-lora.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -97,13 +105,13 @@ default.size.stdout: $(EXECUTABLES)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-itsdk-example-murata-lora.list: $(EXECUTABLES)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "itsdk-example-murata-lora.list"
+board-lora.list: $(EXECUTABLES)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "board-lora.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-itsdk-example-murata-lora.bin: $(EXECUTABLES)
-	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "itsdk-example-murata-lora.bin"
+board-lora.bin: $(EXECUTABLES)
+	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "board-lora.bin"
 	@echo 'Finished building: $@'
 	@echo ' '
 
@@ -114,7 +122,14 @@ clean:
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_BIN)
 
-.PHONY: all clean dependents
+fail-specified-linker-script-missing:
+	@echo 'Error: Cannot find the specified linker script. Check the linker settings in the build configuration.'
+	@exit 2
+
+warn-no-linker-script-specified:
+	@echo 'Warning: No linker script specified. Check the linker settings in the build configuration.'
+
+.PHONY: all clean dependents fail-specified-linker-script-missing warn-no-linker-script-specified
 .SECONDARY:
 
 -include ../makefile.targets

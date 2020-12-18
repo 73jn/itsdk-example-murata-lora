@@ -92,6 +92,8 @@ void Error_Handler(void);
 #define RADIO_ANT_SWITCH_TX_RFO_GPIO_Port GPIOC
 #define RADIO_MOSI_Pin GPIO_PIN_7
 #define RADIO_MOSI_GPIO_Port GPIOA
+#define SONICEN_Pin GPIO_PIN_4
+#define SONICEN_GPIO_Port GPIOA
 #define STLINK_RX_Pin GPIO_PIN_2
 #define STLINK_RX_GPIO_Port GPIOA
 #define RADIO_DIO_2_Pin GPIO_PIN_0

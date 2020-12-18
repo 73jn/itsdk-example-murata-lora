@@ -177,9 +177,9 @@ void project_setup() {
  */
 void project_loop() {
     Event ev = 99;
+	processAlarm(ev);
     ev = XF_popEvent();
 
-	processAlarm(ev);
 	processLogic(ev);
 
 }

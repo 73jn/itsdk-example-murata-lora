@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * File Name          : SPI.h
-  * Description        : This file provides code for the configuration
-  *                      of the SPI instances.
+  * @file    spi.h
+  * @brief   This file contains all the function prototypes for
+  *          the spi.c file
   ******************************************************************************
   * @attention
   *
@@ -17,18 +17,16 @@
   ******************************************************************************
   */
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __spi_H
-#define __spi_H
+#ifndef __SPI_H__
+#define __SPI_H__
+
 #ifdef __cplusplus
- extern "C" {
+extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#define RADIO_NSS_Pin GPIO_PIN_15
-#define RADIO_NSS_GPIO_Port GPIOA
-#define RADIO_SCLK_Pin GPIO_PIN_3
-#define RADIO_SCLK_GPIO_Port GPIOB
+
 /* USER CODE BEGIN Includes */
 
 /* USER CODE END Includes */
@@ -50,14 +48,7 @@ void MX_SPI2_Init(void);
 #ifdef __cplusplus
 }
 #endif
-#endif /*__ spi_H */
 
-/**
-  * @}
-  */
-
-/**
-  * @}
-  */
+#endif /* __SPI_H__ */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
