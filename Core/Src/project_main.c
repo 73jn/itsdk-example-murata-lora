@@ -151,7 +151,10 @@ void project_setup() {
 //	SX1276InitLowPower();
 
 	log_info("Starting up\r\n");				// print a message on the USART2
-	itsdk_delayMs(2000);
+	while(1){
+
+	}
+	itsdk_delayMs(1000);
 	lowPower_enable();
 	processLogic(0);
 

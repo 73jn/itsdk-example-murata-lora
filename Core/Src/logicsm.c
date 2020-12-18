@@ -60,7 +60,7 @@ void processLogic(int event){
 	}
 }
 void goToSleep(){
-	log_info(".");
+	log_info("-");
 	lowPower_delayMs(20000);
 }
 
@@ -76,6 +76,7 @@ void transmitData(void){
 
 	while ( !itsdk_lorawan_hasjoined() ) {
 		itsdk_lorawan_join_sync();
+		log_info(":");
 	}
 
 	log_info("Fire a LoRaWAN message ");

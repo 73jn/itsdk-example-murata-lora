@@ -84,13 +84,13 @@ void MX_GPIO_Init(void)
 
   /*Configure GPIO pins : PA14 PA13 PA8 PA11
                            PA0 */
-  /*
+
   GPIO_InitStruct.Pin = GPIO_PIN_14|GPIO_PIN_13|GPIO_PIN_8|GPIO_PIN_11
                           |GPIO_PIN_0;
   GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-  */
+
 
   /*Configure GPIO pins : PBPin PBPin PBPin */
   GPIO_InitStruct.Pin = RADIO_DIO_0_Pin|RADIO_DIO_1_Pin|RADIO_DIO_2_Pin;
