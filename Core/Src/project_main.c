@@ -151,7 +151,7 @@ void project_setup() {
 //	SX1276InitLowPower();
 
 	log_info("Starting up\r\n");				// print a message on the USART2
-	itsdk_delayMs(2000);
+	itsdk_delayMs(1000);
 	lowPower_enable();
 	processLogic(0);
 
@@ -177,10 +177,21 @@ void project_setup() {
  */
 void project_loop() {
     Event ev = 99;
-    ev = XF_popEvent();
+	processAlarm(ev); //On process d'abord l'alarme car il va push un event si il y a une alarme
 
-	processAlarm(ev);
+    ev = XF_popEvent();
 	processLogic(ev);
 
+	/*
+	 * Test IWD
+	log_info("Slow\r\n");
+	itsdk_delayMs(5000);
+	log_info("Slow\r\n");
+	itsdk_delayMs(5000);
+	log_info("Slow\r\n");
+	itsdk_delayMs(5000);
+	log_info("Slow\r\n");
+	itsdk_delayMs(5000);
+	 */
 }
 

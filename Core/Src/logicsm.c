@@ -60,12 +60,12 @@ void processLogic(int event){
 	}
 }
 void goToSleep(){
-	log_info("GO TO SLEEP");
+	log_info("-");
 	lowPower_delayMs(20000);
 }
 
 void transmitData(void){
-	log_info("TRANSMIT DATA\r\n");
+	log_info("\nTrasnmit, try to connect to LoRaWan...\r\n");
 	static itsdk_lorawan_channelInit_t channels= ITSDK_LORAWAN_CHANNEL;
 	#ifdef ITSDK_LORAWAN_CHANNEL
 		itsdk_lorawan_setup(__LORAWAN_REGION_EU868,&channels);
@@ -78,7 +78,7 @@ void transmitData(void){
 		itsdk_lorawan_join_sync();
 	}
 
-	log_info("Fire a LoRaWAN message ");
+	log_info("Connected ! Fire a LoRaWAN message ");
 	//uint8_t t[20] = {'H','e','l','l','o',' ','W','o','r','l','d'};
 	uint8_t port=10;
 	uint8_t size=16;
@@ -103,7 +103,7 @@ void transmitData(void){
 }
 
 void startMeasure(void){
-	log_info("Start MEASURE");
+	log_info("Start the measure !\r\n");
 	HAL_UART_Receive_IT(&huart1, &byte, 1); //On lance une mesure
 	HAL_Delay(1500);
 	HAL_UART_Receive_IT(&huart1, &byte, 1); //On lance une mesure
