@@ -181,17 +181,5 @@ void project_loop() {
 
     ev = XF_popEvent();
 	processLogic(ev);
-
-	/*
-	 * Test IWD
-	log_info("Slow\r\n");
-	itsdk_delayMs(5000);
-	log_info("Slow\r\n");
-	itsdk_delayMs(5000);
-	log_info("Slow\r\n");
-	itsdk_delayMs(5000);
-	log_info("Slow\r\n");
-	itsdk_delayMs(5000);
-	 */
 }
 

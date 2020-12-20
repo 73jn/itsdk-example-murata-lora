@@ -76,12 +76,12 @@ void MX_RTC_Init(void)
   */
   sAlarm.AlarmTime.Hours = 0;
   sAlarm.AlarmTime.Minutes = 0;
-  sAlarm.AlarmTime.Seconds = 15;
+  sAlarm.AlarmTime.Seconds = 10;
   sAlarm.AlarmTime.SubSeconds = 0;
   sAlarm.AlarmTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
   sAlarm.AlarmTime.StoreOperation = RTC_STOREOPERATION_RESET;
   sAlarm.AlarmMask = ((uint32_t) (RTC_ALARMMASK_NONE|RTC_ALARMMASK_DATEWEEKDAY |
-          RTC_ALARMMASK_HOURS)); //INTERRUPT EVERY MIN
+          RTC_ALARMMASK_HOURS)); //INTERRUPT EVERY HOURS
   sAlarm.AlarmSubSecondMask = RTC_ALARMSUBSECONDMASK_NONE;
   sAlarm.AlarmDateWeekDaySel = RTC_ALARMDATEWEEKDAYSEL_DATE;
   sAlarm.AlarmDateWeekDay = 1;
