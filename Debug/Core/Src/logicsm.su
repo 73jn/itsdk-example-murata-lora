@@ -1,5 +1,7 @@
-logicsm.c:11:6:initLogic	8	static
-logicsm.c:15:6:processLogic	16	static
-logicsm.c:62:6:goToSleep	8	static
-logicsm.c:67:6:transmitData	72	static
-logicsm.c:105:6:startMeasure	8	static
+logicsm.c:14:6:initLogic	8	static
+logicsm.c:18:6:processLogic	16	static
+logicsm.c:69:6:goToSleep	8	static
+logicsm.c:74:6:transmitData	72	static
+logicsm.c:112:6:startMeasure	16	static
+logicsm.c:153:5:charArrayToInt	24	static
+logicsm.c:184:6:resetMeasure	24	static

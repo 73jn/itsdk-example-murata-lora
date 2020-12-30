@@ -7,6 +7,9 @@
 
 #include <stdlib.h>
 #include "logicsm.h"
+#include <stdio.h>
+#include <stdbool.h>
+
 
 void initLogic(void){
 	state = STATE_INITIAL;
@@ -53,8 +56,12 @@ void processLogic(int event){
 			state = SLEEP;
 			break;
 		case MEASURE:
-			startMeasure();
-			state = TRANSMIT_DATA;
+			if(startMeasure()){
+				state = TRANSMIT_DATA;
+			}
+			else {
+				state = SLEEP;
+			}
 			break;
 		}
 	}
@@ -89,7 +96,7 @@ void transmitData(void){
 			10,						// Port
 			__LORAWAN_DR_5,			// Speed
 			LORAWAN_SEND_ACKED,	// With a ack
-			ITSDK_LORAWAN_CNF_RETRY,// And default retry
+			1,// And default retry
 			&port,					// In case of reception - Port (uint8_t)
 			&size,					// In case of reception - Size (uint8_t) - init with buffer max size
 			rx,						// In case of recpetion - Data (uint8_t[] bcopied)
@@ -102,23 +109,80 @@ void transmitData(void){
 	}
 }
 
-void startMeasure(void){
+bool startMeasure(void){
+	int measureAttempt = 0;
+	int mes1 = 0;
 	log_info("Refresh the WDG\r\n");
 #if ITSDK_WITH_WDG != __WDG_NONE && ITSDK_WDG_MS > 0
    wdg_refresh();
 #endif
-	HAL_GPIO_WritePin(SONICEN_GPIO_Port, SONICEN_Pin, GPIO_PIN_SET);
-	itsdk_delayMs(2500);
-	log_info("Start the measure !\r\n");
-	HAL_UART_Receive_IT(&huart1, &byte, 1); //On lance une mesure
-	HAL_Delay(1500);
-	HAL_UART_Receive_IT(&huart1, &byte, 1); //On lance une mesure
-	HAL_Delay(1500);
+	resetMeasure(&tabToPrint[0], 4); //Reset the return array
+	HAL_GPIO_WritePin(SONICEN_GPIO_Port, SONICEN_Pin, GPIO_PIN_SET); //Set on the ultrasonic sensor
+	itsdk_delayMs(2500); //Warm up for ultrasonic sensor
 
-	log_info("We need to send ");
+	log_info("Start the measure !\r\n");
+	while(measureAttempt < 3){
+		HAL_UART_Receive_IT(&huart1, &byte, 1); //On lance une mesure, ca return dans tabToPrint
+		HAL_Delay(1500);
+		//tabToPrint[1]=0x34;
+		mes1 = charArrayToInt(&tabToPrint[0], 4);
+		log_info("Attempt %d", measureAttempt);
+		if (mes1==0){
+			measureAttempt++;
+		}
+		else{
+			measureAttempt=4;
+		}
+	}
+
+	log_info("We measure ");
 	HAL_UART_Transmit(&huart2, &tabToPrint[0], 5, 500);
-	log_info("\r\n");
+	log_info(" cm\r\n");
 	HAL_GPIO_WritePin(SONICEN_GPIO_Port, SONICEN_Pin, GPIO_PIN_RESET);
 	  //waitMeasure = true; //Doit être fait pas l'interrupt et doit tomber dans un etat nop en attendant l'interrupt
+	if(mes1 == 0){
+		log_info("Measure is not valid\r\n");
+		return false;
+	}
+	else {
+		log_info("Measure is valid\r\n");
+		return true;
+	}
+}
 
+int charArrayToInt(uint8_t* array, uint8_t n){
+    int number = 0;
+    int mult = 1;
+
+    n = (int)n < 0 ? -n : n;       /* quick absolute value check  */
+
+    /* for each character in array */
+    while (n--)
+    {
+        /* if not digit or '-', check if number > 0, break or continue */
+        if ((array[n] < '0' || array[n] > '9') && array[n] != '-') {
+            if (number)
+                break;
+            else
+                continue;
+        }
+
+        if (array[n] == '-') {      /* if '-' if number, negate, break */
+            if (number) {
+                number = -number;
+                break;
+            }
+        }
+        else {                      /* convert digit to numeric value   */
+            number += (array[n] - '0') * mult;
+            mult *= 10;
+        }
+    }
+
+    return number;
+}
+void resetMeasure(uint8_t * array, uint8_t size){
+	for (int i = 0; i < size; i++){
+		array[i] = 0x30; //Set to 0
+	}
 }

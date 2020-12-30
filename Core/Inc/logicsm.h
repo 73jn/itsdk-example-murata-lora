@@ -24,6 +24,7 @@
 #include <it_sdk/eeprom/securestore.h>
 #include <it_sdk/lowpower/lowpower.h>
 #include <drivers/sx1276/sx1276.h>
+#include <stdbool.h>
 
 
 typedef enum{STATE_INITIAL,
@@ -42,6 +43,8 @@ LogicState oldState;
 extern uint8_t byte;
 extern uint8_t tabToPrint[5];
 
+extern UART_HandleTypeDef huart1;
+extern UART_HandleTypeDef huart2;
 
 
 void initLogic(void);
@@ -51,7 +54,8 @@ void goToSleep();
 
 void transmitData(void);
 
-void startMeasure(void);
-void getMeasure(char tab[]);
+bool startMeasure(void);
+void resetMeasure(uint8_t * array, uint8_t size);
+int charArrayToInt(uint8_t* array, uint8_t n);
 
 #endif /* INC_LOGICSM_H_ */
